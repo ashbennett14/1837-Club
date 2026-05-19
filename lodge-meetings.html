@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lodge Meeting Calendar</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-calendar="lodge">
+    <main class="app-shell">
+      <section class="calendar-panel" aria-label="1837 Club calendar">
+        <div class="brand-strip" aria-label="1837 Club">
+          <div class="brand-lockup">
+            <img
+              class="brand-crest"
+              src="assets/surrey-1837-club-badge.png"
+              alt="The Surrey 1837 Club Light Blues badge"
+            />
+            <div>
+              <p class="brand-name">The Surrey 1837 Club</p>
+              <p class="brand-line">Light Blues programme</p>
+            </div>
+          </div>
+          <span class="brand-place">Light Blues</span>
+        </div>
+        <nav class="page-nav" aria-label="Site pages">
+          <a href="index.html">Home</a>
+          <a href="social-events.html">Social Events</a>
+          <a href="lodge-meetings.html" aria-current="page">Lodge Meetings</a>
+        </nav>
+
+        <header class="calendar-header">
+          <div>
+            <h1>Lodge Meeting Calendar</h1>
+          </div>
+          <div class="calendar-actions" aria-label="Calendar navigation">
+            <button class="icon-button" id="prevMonth" type="button" aria-label="Previous month">
+              <span aria-hidden="true">‹</span>
+            </button>
+            <button class="text-button" id="todayButton" type="button">Today</button>
+            <button class="icon-button" id="nextMonth" type="button" aria-label="Next month">
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+        </header>
+
+        <div class="month-bar">
+          <h2 id="monthLabel" aria-live="polite"></h2>
+          <p id="eventCount"></p>
+        </div>
+
+        <div class="weekday-row" aria-hidden="true">
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+          <span>Sun</span>
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </section>
+
+      <aside class="details-panel" id="detailsPanel" aria-live="polite">
+        <img
+          class="club-mark"
+          src="assets/surrey-1837-club-badge.png"
+          alt="The Surrey 1837 Club Light Blues badge"
+        />
+        <p class="panel-label">Member Briefing</p>
+        <div id="emptyState" class="empty-state">
+          <p class="kicker">Lodge Meetings</p>
+          <h2>Meeting dates will appear here when added to the calendar.</h2>
+        </div>
+        <article class="event-details hidden" id="eventDetails">
+          <p class="detail-date" id="detailDate"></p>
+          <h2 id="detailTitle"></h2>
+          <dl>
+            <div>
+              <dt>Time</dt>
+              <dd id="detailTime"></dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd id="detailLocation"></dd>
+            </div>
+            <div>
+              <dt>Host</dt>
+              <dd id="detailHost"></dd>
+            </div>
+          </dl>
+          <p id="detailDescription"></p>
+          <div class="detail-tags" id="detailTags"></div>
+          <img class="event-poster hidden" id="detailPoster" alt="" />
+        </article>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
