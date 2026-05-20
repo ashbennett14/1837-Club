@@ -272,10 +272,38 @@ button {
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--navy);
-  background: var(--panel-strong);
+  background: #ffffff;
   font-size: 0.86rem;
   font-weight: 850;
   text-decoration: none;
+}
+
+.facebook-link {
+  border-color: rgba(24, 119, 242, 0.34);
+}
+
+.facebook-link svg {
+  color: #1877f2;
+}
+
+.instagram-link {
+  border-color: rgba(225, 48, 108, 0.34);
+}
+
+.instagram-link svg {
+  color: #e1306c;
+}
+
+.whatsapp-link {
+  border-color: rgba(37, 211, 102, 0.38);
+}
+
+.whatsapp-link svg {
+  color: #25d366;
+}
+
+.surrey-link {
+  border-color: rgba(0, 75, 155, 0.28);
 }
 
 .club-links svg {
@@ -312,7 +340,81 @@ button {
 
 .club-links a:hover {
   border-color: rgba(197, 154, 54, 0.7);
-  background: #ffffff;
+  background: var(--panel-strong);
+}
+
+.login-shell {
+  display: grid;
+  width: min(520px, calc(100vw - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  place-items: center;
+}
+
+.login-panel {
+  display: grid;
+  gap: 22px;
+  width: 100%;
+  padding: clamp(24px, 5vw, 42px);
+  border: 1px solid rgba(13, 55, 109, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow);
+}
+
+.login-logo {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.login-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.login-form input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  font: inherit;
+  text-transform: none;
+}
+
+.login-form input:focus {
+  border-color: var(--navy);
+  outline: 3px solid rgba(13, 55, 109, 0.14);
+}
+
+.login-error {
+  min-height: 20px;
+  margin: 0;
+  color: var(--badge-red);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.login-button {
+  min-height: 46px;
+  border: 0;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--navy);
+  cursor: pointer;
+  font-weight: 900;
 }
 
 .calendar-header,
