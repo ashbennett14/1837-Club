@@ -285,6 +285,31 @@ button {
   fill: currentColor;
 }
 
+.club-links .crest-icon {
+  width: 22px;
+  height: 22px;
+  fill: none;
+}
+
+.crest-icon path:nth-child(1) {
+  fill: #f3bf2c;
+  stroke: #004b9b;
+  stroke-width: 1.25;
+}
+
+.crest-icon path:nth-child(2) {
+  fill: #b7192f;
+}
+
+.crest-icon path:nth-child(3),
+.crest-icon path:nth-child(5) {
+  fill: #004b9b;
+}
+
+.crest-icon path:nth-child(4) {
+  fill: #111111;
+}
+
 .club-links a:hover {
   border-color: rgba(197, 154, 54, 0.7);
   background: #ffffff;
