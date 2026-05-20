@@ -1,5 +1,47 @@
 const socialEvents = [
   {
+    id: "castle-lodge-charity-golf-day",
+    date: "2026-05-23",
+    title: "Castle Lodge Charity Golf Day",
+    time: "09:30 arrival, 11:20 first tee",
+    location: "Milford Golf Course, Station Lane, Milford, GU8 5HS",
+    host: "Castle Lodge 6657",
+    type: "social",
+    poster: "assets/charity-golf-day.jpg",
+    posterAlt: "Castle Lodge Charity Golf Day poster",
+    tags: ["£65 per person", "All abilities", "Charity golf"],
+    description:
+      "A fun charity golf day for all abilities, with bacon roll and hot drink on arrival, curry, beers and presentation after, trophies and prizes, and a prize for the best traditionally dressed golfer.",
+  },
+  {
+    id: "smsa-charity-golf-day",
+    date: "2026-05-29",
+    title: "SMSA Charity Golf Day",
+    time: "18 holes of golf",
+    location: "Croham Hurst Golf Club",
+    host: "Friends of James Terry and The Surrey Masonic Sports Association",
+    type: "social",
+    poster: "assets/smsa-golf-day.jpg",
+    posterAlt: "SMSA Charity Golf Day poster",
+    tags: ["£75", "£35 for club members", "Bacon roll and meal"],
+    description:
+      "Charity Golf Day presented by the Friends of James Terry and The Surrey Masonic Sports Association. Includes 18 holes of golf, bacon roll, two course meal, prizes, raffle, and the Rose Bowl trophy for the winning lady.",
+  },
+  {
+    id: "waterloo-surgical-techniques",
+    date: "2026-06-11",
+    title: "Surgical Techniques From The Battle Of Waterloo",
+    time: "17:00 convocation",
+    location: "Surbiton Masonic Centre",
+    host: "North Surrey First Principals",
+    type: "talk",
+    poster: "assets/waterloo-surgical-techniques.jpg",
+    posterAlt: "Surgical Techniques From The Battle Of Waterloo presentation poster",
+    tags: ["Historical presentation", "Waterloo", "Surbiton"],
+    description:
+      "A fascinating historical presentation on the surgical techniques and medical practices used on the battlefield at Waterloo.",
+  },
+  {
     id: "paintballing-day",
     date: "2026-06-20",
     title: "Paintballing Day",
@@ -26,6 +68,34 @@ const socialEvents = [
     tags: ["£72.50 per person", "Minimum age 16", "Limited grid"],
     description:
       "A 60-minute Grand Prix at Buckmore Park Kart Circuit. Arrive at 11:15 for a 12:15 track start. Race kit is provided, safety briefing is mandatory, and trophies are awarded to the top three teams.",
+  },
+  {
+    id: "lodge-of-resolve-charity-golf-day",
+    date: "2026-07-31",
+    title: "Lodge Of Resolve Charity Golf Day",
+    time: "09:00 tea, 10:30 first tee",
+    location: "Addington Court Golf Club",
+    host: "Lodge of Resolve No. 7177",
+    type: "social",
+    poster: "assets/lodge-of-resolve-golf-day.jpg",
+    posterAlt: "Lodge of Resolve Charity Golf Day poster",
+    tags: ["£60 per golfer", "£25 non-golfers", "Stableford competition"],
+    description:
+      "Charity Golf Day at Addington Court Golf Club. Includes tea or coffee and bacon rolls, 18 holes, dinner, prizes, a post-dinner prize raffle, and a Stableford competition.",
+  },
+  {
+    id: "surrey-3-peaks-challenge",
+    date: "2026-10-31",
+    title: "Surrey 3 Peaks Challenge",
+    time: "23 miles, 3 hills, 9 hours",
+    location: "Box Hill, Holmbury Hill and Leith Hill",
+    host: "Surrey 2030 Festival",
+    type: "social",
+    poster: "assets/surrey-3-peaks.jpg",
+    posterAlt: "Surrey 3 Peaks Challenge poster",
+    tags: ["23 miles", "£250 minimum sponsorship", "Limited spaces"],
+    description:
+      "A Surrey 2030 Festival challenge covering Box Hill, Holmbury Hill and Leith Hill: 23 miles, 3 hills and 9 hours, with limited spaces available.",
   },
 ];
 
@@ -120,7 +190,8 @@ function renderCalendar() {
 
   visibleDays.forEach((day) => {
     const dateKey = toKey(day);
-    const dayEvents = events.filter((event) => event.date === dateKey);
+    const dayEvents =
+      day.getMonth() === activeMonth ? events.filter((event) => event.date === dateKey) : [];
     const cell = document.createElement("section");
     cell.className = "day-cell";
     cell.setAttribute("aria-label", dateFormatter.format(day));
@@ -144,26 +215,12 @@ function renderCalendar() {
 
     dayEvents.forEach((event) => {
       const button = document.createElement("button");
-      button.className = event.poster ? "event-pill poster-event" : "event-pill";
+      button.className = "event-pill";
       button.type = "button";
       button.dataset.eventId = event.id;
       button.dataset.type = event.type;
       button.setAttribute("aria-pressed", event.id === selectedEventId ? "true" : "false");
-
-      if (event.poster) {
-        button.innerHTML = `
-          <img src="${event.poster}" alt="" loading="lazy" />
-          <span class="poster-event-label">
-            <span>${event.title}</span>
-            <span class="event-time">${event.time}</span>
-          </span>
-        `;
-      } else {
-        button.innerHTML = `
-          ${event.title}
-          <span class="event-time">${event.time}</span>
-        `;
-      }
+      button.textContent = event.title;
 
       button.addEventListener("click", () => selectEvent(event.id));
       list.append(button);

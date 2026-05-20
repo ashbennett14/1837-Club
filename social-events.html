@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1837 Club Calendar</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=poster-fix" />
   </head>
   <body data-calendar="social">
     <main class="app-shell">
@@ -76,6 +76,7 @@
         <article class="event-details hidden" id="eventDetails">
           <p class="detail-date" id="detailDate"></p>
           <h2 id="detailTitle"></h2>
+          <img class="event-poster hidden" id="detailPoster" alt="" />
           <dl>
             <div>
               <dt>Time</dt>
@@ -92,11 +93,10 @@
           </dl>
           <p id="detailDescription"></p>
           <div class="detail-tags" id="detailTags"></div>
-          <img class="event-poster hidden" id="detailPoster" alt="" />
         </article>
       </aside>
     </main>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=poster-fix"></script>
   </body>
 </html>
