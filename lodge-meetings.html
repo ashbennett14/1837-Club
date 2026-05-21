@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lodge Meeting Calendar</title>
-    <link rel="stylesheet" href="styles.css?v=social-icon-colours" />
+    <link rel="stylesheet" href="styles.css?v=stats" />
     <script src="auth.js?v=login-gate"></script>
+    <script src="analytics.js?v=stats" defer></script>
   </head>
   <body data-calendar="lodge">
     <main class="app-shell">
@@ -19,7 +20,6 @@
             />
             <div>
               <p class="brand-name">The Surrey 1837 Club</p>
-              <p class="brand-line">Light Blues programme</p>
             </div>
           </div>
           <span class="brand-place">Light Blues</span>
@@ -64,12 +64,6 @@
       </section>
 
       <aside class="details-panel" id="detailsPanel" aria-live="polite">
-        <img
-          class="club-mark"
-          src="assets/surrey-1837-club-badge.png"
-          alt="The Surrey 1837 Club Light Blues badge"
-        />
-        <p class="panel-label">Member Briefing</p>
         <div id="emptyState" class="empty-state">
           <p class="kicker">Lodge Meetings</p>
           <h2>Meeting dates will appear here when added to the calendar.</h2>
@@ -79,7 +73,7 @@
           <h2 id="detailTitle"></h2>
           <img class="event-poster hidden" id="detailPoster" alt="" />
           <dl>
-            <div>
+            <div class="time-detail-row">
               <dt>Time</dt>
               <dd id="detailTime"></dd>
             </div>
@@ -88,7 +82,7 @@
               <dd id="detailLocation"></dd>
             </div>
             <div>
-              <dt>Host</dt>
+              <dt>Lodge Name</dt>
               <dd id="detailHost"></dd>
             </div>
           </dl>
@@ -98,6 +92,6 @@
       </aside>
     </main>
 
-    <script src="script.js?v=poster-fix"></script>
+    <script src="script.js?v=lodge-logo-size"></script>
   </body>
 </html>

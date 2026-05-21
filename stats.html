@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1837 Club Website Stats</title>
+    <link rel="stylesheet" href="styles.css?v=stats" />
+    <script src="auth.js?v=login-gate"></script>
+  </head>
+  <body>
+    <main class="stats-shell">
+      <section class="stats-panel" aria-label="Website statistics">
+        <div class="brand-strip" aria-label="1837 Club">
+          <div class="brand-lockup">
+            <img
+              class="brand-crest"
+              src="assets/surrey-1837-club-badge.png"
+              alt="The Surrey 1837 Club Light Blues badge"
+            />
+            <div>
+              <p class="brand-name">Website Stats</p>
+            </div>
+          </div>
+          <span class="brand-place">Private</span>
+        </div>
+
+        <div class="stats-summary" id="statsSummary"></div>
+        <section class="stats-card">
+          <h1>Page Views</h1>
+          <div class="stats-table" id="pageStats"></div>
+        </section>
+        <section class="stats-card">
+          <h2>Recent Visits</h2>
+          <div class="recent-visits" id="recentVisits"></div>
+        </section>
+        <button class="login-button reset-stats-button" id="resetStats" type="button">
+          Reset Stats
+        </button>
+      </section>
+    </main>
+
+    <script src="stats.js?v=stats"></script>
+  </body>
+</html>

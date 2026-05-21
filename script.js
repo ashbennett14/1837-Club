@@ -99,7 +99,25 @@ const socialEvents = [
   },
 ];
 
-const lodgeEvents = [];
+const lodgeEvents = [
+  {
+    id: "windlesham-dawn-installation",
+    date: "2026-10-16",
+    title: "Windlesham Dawn",
+    lodgeName: "Windlesham Dawn",
+    lodgeNumber: "9686",
+    degree: "Installation",
+    time: "TBC",
+    location: "Chertsey",
+    host: "Windlesham Dawn Lodge No. 9686",
+    type: "lodge",
+    poster: "assets/windlesham-dawn-logo.jpg",
+    posterAlt: "Windlesham Dawn Lodge No. 9686 logo",
+    tags: ["Installation", "Lodge No. 9686", "Chertsey"],
+    description:
+      "Windlesham Dawn Lodge No. 9686 meeting in Chertsey for an Installation.",
+  },
+];
 
 const today = new Date();
 const calendarType = document.body.dataset.calendar || "social";
@@ -110,7 +128,7 @@ const calendarConfig = {
   },
   lodge: {
     events: lodgeEvents,
-    initialDate: new Date(today.getFullYear(), today.getMonth(), 1),
+    initialDate: new Date(2026, 9, 1),
   },
 };
 
@@ -215,12 +233,23 @@ function renderCalendar() {
 
     dayEvents.forEach((event) => {
       const button = document.createElement("button");
-      button.className = "event-pill";
+      button.className = event.type === "lodge" ? "event-pill lodge-event" : "event-pill";
       button.type = "button";
       button.dataset.eventId = event.id;
       button.dataset.type = event.type;
+      button.dataset.degree = event.degree || "";
       button.setAttribute("aria-pressed", event.id === selectedEventId ? "true" : "false");
-      button.textContent = event.title;
+
+      if (event.type === "lodge") {
+        button.innerHTML = `
+          <span class="lodge-event-name">${event.lodgeName}</span>
+          <span class="lodge-event-number">No. ${event.lodgeNumber}</span>
+          <span class="lodge-event-location">${event.location}</span>
+          <span class="degree-badge" data-degree="${event.degree}">${event.degree}</span>
+        `;
+      } else {
+        button.textContent = event.title;
+      }
 
       button.addEventListener("click", () => selectEvent(event.id));
       list.append(button);
@@ -242,6 +271,7 @@ function selectEvent(eventId) {
 
   emptyState.classList.add("hidden");
   eventDetails.classList.remove("hidden");
+  eventDetails.dataset.eventType = event.type || "";
   detailDate.textContent = dateFormatter.format(eventDate);
   detailTitle.textContent = event.title;
   detailTime.textContent = event.time;
