@@ -864,6 +864,8 @@ h1 {
 
 .event-pill {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 34px;
   padding: 7px 8px;
   border: 1px solid transparent;
@@ -891,6 +893,63 @@ h1 {
 .event-pill[data-type="dining"] {
   border-left-color: var(--gold);
   background: #fff7e2;
+}
+
+.social-event {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  min-height: 76px;
+  padding: 8px;
+  border-left-width: 0;
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(5, 20, 42, 0.08);
+}
+
+.social-event-title {
+  display: -webkit-box;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1.1;
+  text-wrap: auto;
+  overflow-wrap: normal;
+}
+
+.event-pill[data-category="1837 Club Event"] {
+  border-color: rgba(13, 55, 109, 0.22);
+  background: #eef6ff;
+}
+
+.event-pill[data-category="Community Event"] {
+  border-color: rgba(197, 154, 54, 0.32);
+  background: #fff7e2;
+}
+
+.category-badge {
+  width: 100%;
+  min-width: 0;
+  justify-self: center;
+  padding: 5px 4px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 0.5rem;
+  font-weight: 950;
+  line-height: 1.05;
+  text-align: center;
+  text-transform: none;
+  overflow-wrap: anywhere;
+}
+
+.category-badge[data-category="1837 Club Event"] {
+  background: var(--navy);
+}
+
+.category-badge[data-category="Community Event"] {
+  background: var(--gold);
 }
 
 .lodge-event {
@@ -1221,6 +1280,60 @@ body[data-calendar="lodge"] .event-details[data-event-type="lodge"] .time-detail
     min-height: 28px;
     padding: 6px;
     border-left-width: 3px;
+    font-size: 0.68rem;
+  }
+
+  body[data-calendar="social"] .weekday-row {
+    display: none;
+  }
+
+  body[data-calendar="social"] .calendar-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  body[data-calendar="social"] .day-cell {
+    display: none;
+  }
+
+  body[data-calendar="social"] .day-cell:has(.event-pill) {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr);
+    align-items: stretch;
+    min-height: 0;
+    padding: 10px;
+  }
+
+  body[data-calendar="social"] .day-number {
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 2px;
+    border-right: 1px solid var(--line);
+  }
+
+  body[data-calendar="social"] .event-list {
+    min-width: 0;
+    margin: 0;
+    padding-left: 10px;
+  }
+
+  body[data-calendar="social"] .social-event {
+    min-height: 0;
+    padding: 10px;
+  }
+
+  body[data-calendar="social"] .social-event-title {
+    display: block;
+    overflow: visible;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    overflow-wrap: normal;
+  }
+
+  body[data-calendar="social"] .category-badge {
+    width: fit-content;
+    max-width: 100%;
+    padding: 6px 10px;
     font-size: 0.68rem;
   }
 

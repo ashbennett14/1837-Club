@@ -7,6 +7,7 @@ const socialEvents = [
     location: "Milford Golf Course, Station Lane, Milford, GU8 5HS",
     host: "Castle Lodge 6657",
     type: "social",
+    category: "Community Event",
     poster: "assets/charity-golf-day.jpg",
     posterAlt: "Castle Lodge Charity Golf Day poster",
     tags: ["£65 per person", "All abilities", "Charity golf"],
@@ -21,6 +22,7 @@ const socialEvents = [
     location: "Croham Hurst Golf Club",
     host: "Friends of James Terry and The Surrey Masonic Sports Association",
     type: "social",
+    category: "Community Event",
     poster: "assets/smsa-golf-day.jpg",
     posterAlt: "SMSA Charity Golf Day poster",
     tags: ["£75", "£35 for club members", "Bacon roll and meal"],
@@ -35,6 +37,7 @@ const socialEvents = [
     location: "Surbiton Masonic Centre",
     host: "North Surrey First Principals",
     type: "talk",
+    category: "Community Event",
     poster: "assets/waterloo-surgical-techniques.jpg",
     posterAlt: "Surgical Techniques From The Battle Of Waterloo presentation poster",
     tags: ["Historical presentation", "Waterloo", "Surbiton"],
@@ -49,6 +52,7 @@ const socialEvents = [
     location: "Go Paintball London, Salmons Lane, Whyteleafe, CR3 0HB",
     host: "Surrey 1837 Club",
     type: "social",
+    category: "1837 Club Event",
     poster: "assets/paintballing-day.jpg",
     posterAlt: "1837 Club Paintballing Day event poster",
     tags: ["£25.99", "Pizza lunch included", "Family and friends welcome"],
@@ -63,11 +67,27 @@ const socialEvents = [
     location: "Buckmore Park Kart Circuit, Maidstone Road, Chatham, Kent, ME5 9QG",
     host: "Surrey 1837 Club",
     type: "social",
+    category: "1837 Club Event",
     poster: "assets/go-karting-grand-prix.jpg",
     posterAlt: "Surrey 1837 Club Go-Karting Grand Prix event poster",
     tags: ["£72.50 per person", "Minimum age 16", "Limited grid"],
     description:
       "A 60-minute Grand Prix at Buckmore Park Kart Circuit. Arrive at 11:15 for a 12:15 track start. Race kit is provided, safety briefing is mandatory, and trophies are awarded to the top three teams.",
+  },
+  {
+    id: "city-of-london-walking-tour",
+    date: "2026-07-11",
+    title: "City Of London Walking Tour",
+    time: "11:00 walk, lunch at 13:30",
+    location: "City Thameslink Station, Holborn Viaduct exit, opposite Starbucks",
+    host: "Surrey 1837 Club",
+    type: "social",
+    category: "1837 Club Event",
+    poster: "assets/city-of-london-walking-tour.png",
+    posterAlt: "1837 Club City of London Walking Tour poster",
+    tags: ["Free", "Maximum 14 people", "Donations welcome"],
+    description:
+      "A guided walking tour through the heart of the City of London with an official City of London Green Badge Guide, exploring masonic connections and wider history. The walk lasts approximately two hours, with an optional pub lunch booked for 13:30.",
   },
   {
     id: "lodge-of-resolve-charity-golf-day",
@@ -77,11 +97,27 @@ const socialEvents = [
     location: "Addington Court Golf Club",
     host: "Lodge of Resolve No. 7177",
     type: "social",
+    category: "Community Event",
     poster: "assets/lodge-of-resolve-golf-day.jpg",
     posterAlt: "Lodge of Resolve Charity Golf Day poster",
     tags: ["£60 per golfer", "£25 non-golfers", "Stableford competition"],
     description:
       "Charity Golf Day at Addington Court Golf Club. Includes tea or coffee and bacon rolls, 18 holes, dinner, prizes, a post-dinner prize raffle, and a Stableford competition.",
+  },
+  {
+    id: "rifle-shooting-day",
+    date: "2026-09-05",
+    title: "Rifle Shooting Day",
+    time: "09:00-15:00",
+    location: "Private range near Bexhill-on-Sea",
+    host: "Surrey 1837 Club",
+    type: "social",
+    category: "1837 Club Event",
+    poster: "assets/rifle-shooting-day.png",
+    posterAlt: "1837 Club Rifle Shooting Day poster",
+    tags: ["£215 per person", "Only 7 spaces remain", "BBQ lunch included"],
+    description:
+      "A rifle shooting day on a private range near Bexhill-on-Sea, with professional instruction and the opportunity to shoot multiple rifles at distances from 50m to 200m. Includes at least 100 rounds of ammunition, BBQ lunch and refreshments.",
   },
   {
     id: "surrey-3-peaks-challenge",
@@ -91,6 +127,7 @@ const socialEvents = [
     location: "Box Hill, Holmbury Hill and Leith Hill",
     host: "Surrey 2030 Festival",
     type: "social",
+    category: "Community Event",
     poster: "assets/surrey-3-peaks.jpg",
     posterAlt: "Surrey 3 Peaks Challenge poster",
     tags: ["23 miles", "£250 minimum sponsorship", "Limited spaces"],
@@ -238,6 +275,7 @@ function renderCalendar() {
       button.dataset.eventId = event.id;
       button.dataset.type = event.type;
       button.dataset.degree = event.degree || "";
+      button.dataset.category = event.category || "";
       button.setAttribute("aria-pressed", event.id === selectedEventId ? "true" : "false");
 
       if (event.type === "lodge") {
@@ -248,7 +286,11 @@ function renderCalendar() {
           <span class="degree-badge" data-degree="${event.degree}">${event.degree}</span>
         `;
       } else {
-        button.textContent = event.title;
+        button.classList.add("social-event");
+        button.innerHTML = `
+          <span class="social-event-title">${event.title}</span>
+          <span class="category-badge" data-category="${event.category}">${event.category}</span>
+        `;
       }
 
       button.addEventListener("click", () => selectEvent(event.id));
