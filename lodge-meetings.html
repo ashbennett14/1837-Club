@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lodge Meeting Calendar</title>
-    <link rel="stylesheet" href="styles.css?v=social-mobile" />
+    <link rel="stylesheet" href="styles.css?v=motion" />
     <script src="auth.js?v=login-gate"></script>
     <script src="analytics.js?v=stats" defer></script>
+    <script src="motion.js?v=motion" defer></script>
   </head>
   <body data-calendar="lodge">
     <main class="app-shell">
@@ -67,7 +68,7 @@
       <aside class="details-panel" id="detailsPanel" aria-live="polite">
         <div id="emptyState" class="empty-state">
           <p class="kicker">Lodge Meetings</p>
-          <h2>Meeting dates will appear here when added to the calendar.</h2>
+          <h2>Choose a meeting to see the details</h2>
         </div>
         <article class="event-details hidden" id="eventDetails">
           <p class="detail-date" id="detailDate"></p>
@@ -98,6 +99,6 @@
       </footer>
     </main>
 
-    <script src="script.js?v=lodge-logo-size"></script>
+    <script src="script.js?v=motion"></script>
   </body>
 </html>
