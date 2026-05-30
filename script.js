@@ -317,6 +317,7 @@ const lodgeEvents = [
 ];
 
 const today = new Date();
+const todayKey = toKey(today);
 const calendarType = document.body.dataset.calendar || "social";
 const calendarConfig = {
   social: {
@@ -415,7 +416,11 @@ function renderCalendar() {
       cell.classList.add("outside");
     }
 
-    if (dateKey === toKey(today)) {
+    if (dateKey < todayKey) {
+      cell.classList.add("past");
+    }
+
+    if (dateKey === todayKey) {
       cell.classList.add("today");
     }
 
@@ -436,6 +441,9 @@ function renderCalendar() {
       button.dataset.type = event.type;
       button.dataset.degree = event.degree || "";
       button.dataset.category = event.category || "";
+      if (event.date < todayKey) {
+        button.classList.add("past-event");
+      }
       button.setAttribute("aria-pressed", event.id === selectedEventId ? "true" : "false");
 
       if (event.type === "lodge") {
