@@ -413,11 +413,19 @@ button,
   background: #ffffff;
 }
 
-.club-links-box h2 {
+.club-links-box h2,
+.club-resource-section h3 {
   margin: 0 0 12px;
+  color: var(--navy-deep);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.3rem;
   line-height: 1;
+}
+
+.club-resource-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(13, 55, 109, 0.12);
 }
 
 .club-links {
@@ -468,6 +476,39 @@ button,
   border-color: rgba(0, 75, 155, 0.28);
 }
 
+.solomon-link {
+  border-color: rgba(197, 154, 54, 0.34);
+}
+
+.solomon-link img {
+  width: 48px;
+  height: 22px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.portal-link {
+  border-color: rgba(13, 55, 109, 0.3);
+}
+
+.portal-link img {
+  width: 42px;
+  height: 20px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.companion-link {
+  border-color: rgba(71, 118, 173, 0.34);
+}
+
+.companion-link img {
+  width: 32px;
+  height: 22px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
 .club-links svg {
   width: 19px;
   height: 19px;
@@ -509,6 +550,10 @@ button,
 
 .club-links a:hover svg {
   transform: scale(1.06);
+}
+
+.club-links a:hover img {
+  transform: scale(1.04);
 }
 
 .join-panel {
@@ -854,8 +899,11 @@ h1 {
 }
 
 .calendar-actions {
-  flex-wrap: wrap;
+  gap: 6px;
+  flex-wrap: nowrap;
   justify-content: flex-end;
+  width: max-content;
+  max-width: 100%;
 }
 
 .icon-button,
@@ -871,15 +919,18 @@ h1 {
 }
 
 .icon-button {
+  flex: 0 0 42px;
   width: 42px;
   font-size: 1.65rem;
   line-height: 1;
 }
 
 .text-button {
+  flex: 0 0 auto;
   padding: 0 18px;
   font-size: 0.9rem;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .icon-button:hover,
